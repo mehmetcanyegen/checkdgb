@@ -1,0 +1,1 @@
+YenilemeAraligi=30000
