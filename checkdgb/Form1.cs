@@ -123,7 +123,6 @@ namespace checkdgb
 
                 tmp = "!";
             }
-            //   Console.WriteLine(r);
             CreateTextIcon(tmp);
         }
 
@@ -147,6 +146,11 @@ namespace checkdgb
         private string checkCoin()
         {
             var url = new Uri("https://api.coinmarketcap.com/v1/ticker/digibyte/?convert=BTC");
+            DateTime d1 = DateTime.Now;
+            //var url = new Uri("https://bittrex.com/api/v1.1/public/getmarketsummaries");
+            DateTime d2 = DateTime.Now;
+
+          //  MessageBox.Show(d1.ToLongTimeString() + " \n " + d2.ToLongTimeString());
             var tmpr = "";
             try
             {
@@ -198,8 +202,15 @@ namespace checkdgb
         
         private void timer1_Tick(object sender, EventArgs e)
         {
-            refreshCoin();
-            //Console.WriteLine(DateTime.Now.ToLongTimeString());
+            try
+            {
+                refreshCoin();
+            }
+            catch (Exception ex)
+            {
+                    
+               
+            }
 
         }
 
