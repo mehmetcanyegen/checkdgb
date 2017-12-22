@@ -27,7 +27,6 @@ namespace checkdgb
             InitializeComponent();
 
             this.Activated += Form1_Activated;
-
         }
 
         void Form1_Activated(object sender, EventArgs e)
@@ -50,16 +49,17 @@ namespace checkdgb
             }
         
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            refreshCoin();
+            RefreshCoin();
             AyarCek();
             timer1.Start();
 
          
         }
 
-        private void SetStartup()
+        private static void SetStartup()
         {
             try
             {
@@ -78,7 +78,7 @@ namespace checkdgb
 
         }
 
-        private void DeleteStartup()
+        private static void DeleteStartup()
         {
             try
             {
@@ -94,12 +94,12 @@ namespace checkdgb
 
         }
 
-        private void refreshCoin()
+        private void RefreshCoin()
         {
             var tmp = "";
             try
             {
-                tmp = checkCoin();
+                tmp = CheckCoin();
             }
             catch (Exception)
             {
@@ -116,7 +116,7 @@ namespace checkdgb
             }
             try
             {
-                tmp = editNumbers(tmp);
+                tmp = EditNumbers(tmp);
             }
             catch (Exception ex)
             {
@@ -143,11 +143,11 @@ namespace checkdgb
             //DestroyIcon(hIcon.ToInt32);
         }
 
-        private string checkCoin()
+        private static string CheckCoin()
         {
             var url = new Uri("https://api.coinmarketcap.com/v1/ticker/digibyte/?convert=BTC");
-            DateTime d1 = DateTime.Now;
-            DateTime d2 = DateTime.Now;
+            var d1 = DateTime.Now;
+            var d2 = DateTime.Now;
 
             var tmpr = "";
             try
@@ -155,11 +155,10 @@ namespace checkdgb
                 using (var webClient = new System.Net.WebClient())
                 {
                     var str = webClient.DownloadString(url);
-                    Newtonsoft.Json.Linq.JArray jar = (Newtonsoft.Json.Linq.JArray)JsonConvert.DeserializeObject(str);
+                    var jar = (Newtonsoft.Json.Linq.JArray)JsonConvert.DeserializeObject(str);
 
-                    foreach (JObject item in jar)
+                    foreach (var prc in from JObject item in jar select item.GetValue("price_btc"))
                     {
-                        JToken prc = item.GetValue("price_btc");
                         tmpr = prc.ToString();
                     }
 
@@ -172,37 +171,28 @@ namespace checkdgb
             return tmpr;
         }
 
-        private string editNumbers(string nmb)
+        private static string EditNumbers(string nmb)
         {
             nmb = nmb.Split('.')[1];
             var tmp = "";
-            var tmp2 = "";
             var count = 0;
-            for (int i = 0; i < nmb.Length; i++)
+            foreach (var t in nmb)
             {
-                if (nmb[i].ToString() != "0")
+                if (t.ToString() != "0")
                     count++;
                 if (count > 0)
                 {
-                    tmp += nmb[i].ToString();
-                }
-
-            }
-            for (int i = 0; i < tmp.Length; i++)
-            {
-                if (i < 3)
-                {
-                    tmp2 += tmp[i];
+                    tmp += t.ToString();
                 }
             }
-            return tmp2;
+            return tmp.Where((t, i) => i < 3).Aggregate("", (current, t) => current + t);
         }
         
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
             {
-                refreshCoin();
+                RefreshCoin();
             }
             catch (Exception ex)
             {
@@ -230,7 +220,7 @@ namespace checkdgb
 
         private void hakkındaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("iletisim@mehmetcanyegen.com.tr", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(@"iletisim@mehmetcanyegen.com.tr", @"Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void ayarYenileToolStripMenuItem_Click(object sender, EventArgs e)
