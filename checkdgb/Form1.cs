@@ -19,7 +19,6 @@ using System.IO;
 namespace checkdgb
 {
 
-
     public partial class Form1 : Form
     {
         public Form1()
@@ -34,14 +33,14 @@ namespace checkdgb
             this.Hide();
         }
 
-        private void AyarCek()
+        private void GetSettings()
         {
             try
             {
-                var tmp = File.ReadAllText("Ayar.txt").Trim();
-                var aralik = tmp.Split('=')[1].ToString().Trim();
-                var aralikInt = Int32.Parse(aralik);
-                timer1.Interval = aralikInt;
+                var tmp = File.ReadAllText("Settings.txt").Trim();
+                var interval = tmp.Split('=')[1].ToString().Trim();
+                var intervalInt = Int32.Parse(interval);
+                timer1.Interval = intervalInt;
             }
             catch (Exception ex)
             {
@@ -53,7 +52,7 @@ namespace checkdgb
         private void Form1_Load(object sender, EventArgs e)
         {
             RefreshCoin();
-            AyarCek();
+            GetSettings();
             timer1.Start();
 
          
@@ -78,7 +77,7 @@ namespace checkdgb
 
         }
 
-        private static void DeleteStartup()
+        private static void RemoveFromStartup()
         {
             try
             {
@@ -202,30 +201,35 @@ namespace checkdgb
 
         }
 
-        private void programıKapatToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
-        private void başlangıcaEkleToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnAddToStartup_Click(object sender, EventArgs e)
         {
             SetStartup();
 
         }
 
-        private void başlangıçtanÇıkarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnRemoveFromStartup_Click(object sender, EventArgs e)
         {
-            DeleteStartup();
+            RemoveFromStartup();
+
         }
 
-        private void hakkındaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(@"iletisim@mehmetcanyegen.com.tr", @"Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Application.Exit();
+
         }
 
-        private void ayarYenileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnAbout_Click(object sender, EventArgs e)
         {
-            AyarCek();
+            MessageBox.Show(@"contact@mehmetcanyegen.com.tr", @"Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void btnReloadSettings_Click(object sender, EventArgs e)
+        {
+            GetSettings();
+
         }
 
     }

@@ -32,11 +32,11 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.başlangıcaEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.başlangıçtanÇıkarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.programıKapatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hakkındaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayarYenileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAddToStartup = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRemoveFromStartup = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReloadSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,48 +55,48 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.başlangıcaEkleToolStripMenuItem,
-            this.başlangıçtanÇıkarToolStripMenuItem,
-            this.programıKapatToolStripMenuItem,
-            this.ayarYenileToolStripMenuItem,
-            this.hakkındaToolStripMenuItem});
+            this.btnAddToStartup,
+            this.btnRemoveFromStartup,
+            this.btnReloadSettings,
+            this.btnAbout,
+            this.btnClose});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(172, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(190, 136);
             // 
-            // başlangıcaEkleToolStripMenuItem
+            // btnAddToStartup
             // 
-            this.başlangıcaEkleToolStripMenuItem.Name = "başlangıcaEkleToolStripMenuItem";
-            this.başlangıcaEkleToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.başlangıcaEkleToolStripMenuItem.Text = "Başlangıca Ekle";
-            this.başlangıcaEkleToolStripMenuItem.Click += new System.EventHandler(this.başlangıcaEkleToolStripMenuItem_Click);
+            this.btnAddToStartup.Name = "btnAddToStartup";
+            this.btnAddToStartup.Size = new System.Drawing.Size(189, 22);
+            this.btnAddToStartup.Text = "Add To Startup";
+            this.btnAddToStartup.Click += new System.EventHandler(this.btnAddToStartup_Click);
             // 
-            // başlangıçtanÇıkarToolStripMenuItem
+            // btnRemoveFromStartup
             // 
-            this.başlangıçtanÇıkarToolStripMenuItem.Name = "başlangıçtanÇıkarToolStripMenuItem";
-            this.başlangıçtanÇıkarToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.başlangıçtanÇıkarToolStripMenuItem.Text = "Başlangıçtan Çıkar";
-            this.başlangıçtanÇıkarToolStripMenuItem.Click += new System.EventHandler(this.başlangıçtanÇıkarToolStripMenuItem_Click);
+            this.btnRemoveFromStartup.Name = "btnRemoveFromStartup";
+            this.btnRemoveFromStartup.Size = new System.Drawing.Size(189, 22);
+            this.btnRemoveFromStartup.Text = "Remove From Startup";
+            this.btnRemoveFromStartup.Click += new System.EventHandler(this.btnRemoveFromStartup_Click);
             // 
-            // programıKapatToolStripMenuItem
+            // btnClose
             // 
-            this.programıKapatToolStripMenuItem.Name = "programıKapatToolStripMenuItem";
-            this.programıKapatToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.programıKapatToolStripMenuItem.Text = "Programı Kapat";
-            this.programıKapatToolStripMenuItem.Click += new System.EventHandler(this.programıKapatToolStripMenuItem_Click);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(189, 22);
+            this.btnClose.Text = "Exit";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // hakkındaToolStripMenuItem
+            // btnReloadSettings
             // 
-            this.hakkındaToolStripMenuItem.Name = "hakkındaToolStripMenuItem";
-            this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.hakkındaToolStripMenuItem.Text = "Hakkında";
-            this.hakkındaToolStripMenuItem.Click += new System.EventHandler(this.hakkındaToolStripMenuItem_Click);
+            this.btnReloadSettings.Name = "btnReloadSettings";
+            this.btnReloadSettings.Size = new System.Drawing.Size(189, 22);
+            this.btnReloadSettings.Text = "Reload Settings";
+            this.btnReloadSettings.Click += new System.EventHandler(this.btnReloadSettings_Click);
             // 
-            // ayarYenileToolStripMenuItem
+            // btnAbout
             // 
-            this.ayarYenileToolStripMenuItem.Name = "ayarYenileToolStripMenuItem";
-            this.ayarYenileToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.ayarYenileToolStripMenuItem.Text = "Ayar Yenile";
-            this.ayarYenileToolStripMenuItem.Click += new System.EventHandler(this.ayarYenileToolStripMenuItem_Click);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(189, 22);
+            this.btnAbout.Text = "About";
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // Form1
             // 
@@ -117,11 +117,11 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem başlangıcaEkleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem başlangıçtanÇıkarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem programıKapatToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hakkındaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ayarYenileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnAddToStartup;
+        private System.Windows.Forms.ToolStripMenuItem btnRemoveFromStartup;
+        private System.Windows.Forms.ToolStripMenuItem btnClose;
+        private System.Windows.Forms.ToolStripMenuItem btnAbout;
+        private System.Windows.Forms.ToolStripMenuItem btnReloadSettings;
 
     }
 }
